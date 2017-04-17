@@ -1,0 +1,8 @@
+---
+deploy_user: vagrant
+app_dir: /vagrant
+server_name: foo.example.com
+server_ssl_cert: 'foo.example.com.crt'
+server_ssl_key: 'foo.example.com.key'
+ssl_certs_path: '/etc/pki/nginx'
+letsencrypt_www_dir: '/var/www/letsencrypt'

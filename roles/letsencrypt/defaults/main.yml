@@ -1,0 +1,2 @@
+---
+letsencrypt_www_dir: /var/www/letsencrypt

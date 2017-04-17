@@ -1,0 +1,4 @@
+#!/bin/sh
+
+#certbot certonly --staging --webroot -w {{ letsencrypt_www_dir }} -d {{ server_name }}
+certbot certonly --webroot -w {{ letsencrypt_www_dir }} -d {{ server_name }}

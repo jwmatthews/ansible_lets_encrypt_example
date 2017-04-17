@@ -1,0 +1,19 @@
+---
+  # Available in EPEL/CentOS
+- name: install certbot
+  yum: name=certbot state=present
+  become: true
+
+- name: Create nginx configuration from template
+  template: src=templates/run_certbot.sh.j2 dest=/usr/local/bin/run_certbot.sh owner=root group=root mode=0755
+  become: true
+
+# Creates a cron file under /etc/cron.d
+- cron: name="letsencrypt renew certs" minute=0 hour=2
+        user="root" job="certbot renew"
+        cron_file=letsencrypt_renew_certs
+  become: true
+
+- name: copy letsencrypt credentials
+  copy: src=files/{{ server_name }}/etc/letsencrypt dest=/etc owner=root group=root
+  become: true
